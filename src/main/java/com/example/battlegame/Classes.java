@@ -8,7 +8,7 @@ public class Classes {
 
     private int[] attributeChanges;//Strength, Speed, Health, Defense
 
-    private ArrayList<Attack> attacks;
+    private ArrayList<Attack> attacks = new ArrayList<>();
 
 
     public Classes(String className){
