@@ -32,4 +32,6 @@ public class HelloController {
         int index = random.nextInt(fighterclasses.length);
         compPlayers.add(new Player(fighterclasses[index], p1));
     }
+
+
 }

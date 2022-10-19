@@ -9,6 +9,8 @@ public class Player {
 
     private int playerlevel;
 
+    private Inventory inventory = new Inventory();
+
     public Player(String name, Classes fighterclass){
         this.name = name;
         this.fighterClass = fighterclass;
