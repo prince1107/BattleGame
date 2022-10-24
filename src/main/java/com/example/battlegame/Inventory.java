@@ -14,7 +14,7 @@ public class Inventory {
         itemsOwned.add(newItem);
     }
 
-    public void setItem(OwnedItems ownedItems) {
+    public void removeItem(OwnedItems ownedItems) {
         itemsOwned.remove(ownedItems);
     }
 

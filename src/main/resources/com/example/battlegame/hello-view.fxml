@@ -1,16 +1,172 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.battlegame.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="200.0" tabMaxWidth="500.0" tabMinHeight="35.0" tabMinWidth="100.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battlegame.HelloController">
+  <tabs>
+    <Tab text="Setup">
+      <content>
+        <AnchorPane maxHeight="460.0" maxWidth="600.0" minHeight="0.0" minWidth="0.0" prefHeight="460.0" prefWidth="600.0">
+               <children>
+                  <ListView fx:id="classesListView" layoutX="50.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
+                  <Label fx:id="classSetup" alignment="CENTER" layoutX="50.0" layoutY="25.0" prefHeight="75.0" prefWidth="200.0" text="Class:" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nameField" layoutX="350.0" layoutY="100.0" prefHeight="50.0" prefWidth="200.0" promptText="Name:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="nameSetup" alignment="CENTER" layoutX="400.0" layoutY="50.0" prefHeight="30.0" prefWidth="100.0" text="Name:" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="weaponSetup" alignment="CENTER" layoutX="350.0" layoutY="200.0" prefHeight="30.0" prefWidth="200.0" text="Starting Weapon" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <SplitMenuButton fx:id="weaponMenu" layoutX="350.0" layoutY="250.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Weapons">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </SplitMenuButton>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="225.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="createCharacterButton" layoutX="200.0" layoutY="350.0" onAction="#onHelloButtonClick" prefHeight="75.0" prefWidth="200.0" text="Create Character">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab text="Home">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="opponentsView" layoutX="25.0" layoutY="285.0" onMouseClicked="#showCompStats" prefHeight="150.0" prefWidth="200.0" />
+                  <ListView fx:id="opponentsStats" layoutX="375.0" layoutY="285.0" onMouseClicked="#startBattle" prefHeight="150.0" prefWidth="200.0" />
+                  <Label fx:id="opponentStatsLabel" alignment="CENTER" layoutX="375.0" layoutY="235.0" prefHeight="50.0" prefWidth="200.0" text="Opponent Class and Level" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="opponentsLabel" alignment="CENTER" layoutX="25.0" layoutY="235.0" prefHeight="50.0" prefWidth="200.0" text="Opponents:" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="playerStats" layoutX="25.0" layoutY="75.0" prefHeight="150.0" prefWidth="200.0" />
+                  <Label fx:id="playerStatsLabel" alignment="CENTER" layoutX="25.0" layoutY="25.0" prefHeight="50.0" prefWidth="200.0" text="Your Stats:" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="inventoryLabel1" alignment="CENTER" layoutX="375.0" layoutY="25.0" prefHeight="50.0" prefWidth="200.0" text="Inventory:" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="inventoryView1" layoutX="375.0" layoutY="75.0" prefHeight="150.0" prefWidth="200.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+    <Tab text="Battle">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="600.0">
+               <children>
+                  <ImageView fx:id="playerPic" fitHeight="125.0" fitWidth="125.0" layoutX="25.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true" />
+                  <ListView fx:id="playerAttacks" layoutX="375.0" layoutY="285.0" prefHeight="150.0" prefWidth="200.0" />
+                  <ListView fx:id="playerInventory" layoutX="175.0" layoutY="285.0" prefHeight="150.0" prefWidth="200.0" />
+                  <Label fx:id="battleResultLabel" alignment="CENTER" layoutX="25.0" layoutY="25.0" prefHeight="150.0" prefWidth="200.0" text="Label" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ProgressBar fx:id="compHealthBar" layoutX="225.0" layoutY="100.0" prefHeight="25.0" prefWidth="200.0" progress="0.0" />
+                  <Label fx:id="compHealthLabel" alignment="CENTER" layoutX="225.0" layoutY="75.0" prefHeight="25.0" prefWidth="200.0" text="COMP Health: 100" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="playerLabel" alignment="CENTER" layoutX="25.0" layoutY="410.0" prefHeight="25.0" prefWidth="125.0" text="YOU" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="compPic" fitHeight="125.0" fitWidth="125.0" layoutX="450.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="compLabel" alignment="CENTER" layoutX="450.0" layoutY="150.0" prefHeight="25.0" prefWidth="125.0" text="COMP" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="playerAttackLabel" alignment="CENTER" layoutX="375.0" layoutY="235.0" prefHeight="50.0" prefWidth="200.0" text="Attacks:" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ProgressBar fx:id="playerHealthBar" layoutX="25.0" layoutY="260.0" prefHeight="25.0" prefWidth="150.0" progress="0.0" />
+                  <Label fx:id="playerHealthLabel" alignment="CENTER" layoutX="25.0" layoutY="235.0" prefHeight="25.0" prefWidth="150.0" text="Your Health: 100" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="playerInventoryLabel" alignment="CENTER" layoutX="175.0" layoutY="235.0" prefHeight="50.0" prefWidth="200.0" text="Inventory:" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab text="Shop">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="battleResultLabel11" alignment="CENTER" layoutX="25.0" layoutY="25.0" prefHeight="50.0" prefWidth="200.0" text="Coins: 0" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="inventoryLabel" alignment="CENTER" layoutX="25.0" layoutY="100.0" prefHeight="50.0" prefWidth="200.0" text="Inventory:" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="inventoryView" layoutX="25.0" layoutY="150.0" prefHeight="150.0" prefWidth="200.0" />
+                  <ListView fx:id="playerInventory1" layoutX="375.0" layoutY="150.0" prefHeight="150.0" prefWidth="200.0" />
+                  <Label fx:id="ShopLabel" alignment="CENTER" layoutX="375.0" layoutY="100.0" prefHeight="50.0" prefWidth="200.0" text="Shop:" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="statsLabel" alignment="CENTER" layoutX="200.0" layoutY="310.0" prefHeight="25.0" prefWidth="200.0" text="Stats" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="statsView" layoutX="200.0" layoutY="335.0" prefHeight="100.0" prefWidth="200.0" />
+               </children></AnchorPane>
+         </content>
+      </Tab>
+  </tabs>
+</TabPane>

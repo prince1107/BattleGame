@@ -5,7 +5,7 @@ public class Player {
 
     private Classes fighterClass;
 
-    private int[] attributes = {50,50,50,50};
+    private int[] attributes = {50,50,50,50};//Strength, Speed, Health, Defense
 
     private int playerlevel;
 
@@ -20,7 +20,6 @@ public class Player {
         playerlevel = 1;
     }
     public Player(Classes fighterclass, Player player){
-        this.name = name;
         this.fighterClass = fighterclass;
         for (int i = 0; i < attributes.length; i++) {
             attributes[i] += fighterclass.getAttributeChanges()[i]*player.getPlayerlevel();
@@ -41,5 +40,9 @@ public class Player {
 
     public int getPlayerlevel() {
         return playerlevel;
+    }
+
+    protected void changeAttributes(int index, int change){
+        attributes[index] += change;//Strength, Speed, Health, Defense
     }
 }
