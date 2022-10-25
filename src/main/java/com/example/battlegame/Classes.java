@@ -21,6 +21,7 @@ public class Classes {
             attacks.add(new Attack("Sharpness++", 0));
             attacks.add(new Attack("Lance Dash", 20));
             attacks.add(new Attack("Sweep & Slice", 10));
+            attacks.add(new Attack("Flee", 0));
 
         } else if(className.equals("mage")){
             this.attributeChanges = new int[]{-10,15,20,0};
@@ -30,6 +31,7 @@ public class Classes {
             attacks.add(new Attack("Speed++", 0));
             attacks.add(new Attack("Sun Spear", 35));
             attacks.add(new Attack("Water Whip", 10));
+            attacks.add(new Attack("Flee", 0));
 
         } else if(className.equals("archer")){
             this.attributeChanges = new int[]{-10,25,0,10};
@@ -39,6 +41,7 @@ public class Classes {
             attacks.add(new Attack("Speed++", 0));
             attacks.add(new Attack("Loudest Arrows", 10));
             attacks.add(new Attack("Multishot", 20));
+            attacks.add(new Attack("Flee", 0));
 
         } else if(className.equals("bard")){
             this.attributeChanges = new int[]{20,-5,0,10};
@@ -48,6 +51,7 @@ public class Classes {
             attacks.add(new Attack("Health Song", 0));
             attacks.add(new Attack("Xylophone Confusion", 5));
             attacks.add(new Attack("Speed Song", 15));
+            attacks.add(new Attack("Flee", 0));
 
         } else if(className.equals("shooter")){
             this.attributeChanges = new int[]{20,-5,0,10};
@@ -56,6 +60,7 @@ public class Classes {
             attacks.add(new Attack("Speed++", 0));
             attacks.add(new Attack("Snipe", 100000));
             attacks.add(new Attack("MultiShot", 30));
+            attacks.add(new Attack("Flee", 0));
 
         }
     }

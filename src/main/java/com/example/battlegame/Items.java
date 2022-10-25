@@ -6,17 +6,18 @@ public class Items {
     private int damage;
     private int healing;
     private int speed;
-    private int addedHealth;
     private int defense;
 
-    public Items(String name, int damage, int healing, int speed, int addedHealth, int defense){
+    private int shopPrice;
+
+    public Items(String name, int damage, int healing, int speed, int defense, int shopPrice){
         this.name = name;
 
         this.damage = damage;
         this.healing = healing;
         this.speed = speed;
-        this.addedHealth = addedHealth;
         this.defense = defense;
+        this.shopPrice = shopPrice;
     }
 
     public String getName() {
@@ -31,15 +32,15 @@ public class Items {
         return defense;
     }
 
-    public int getAddedHealth() {
-        return addedHealth;
-    }
-
     public int getHealing() {
         return healing;
     }
 
     public int getSpeed() {
         return speed;
+    }
+
+    public int getShopPrice() {
+        return shopPrice;
     }
 }

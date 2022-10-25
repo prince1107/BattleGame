@@ -9,6 +9,10 @@ public class Player {
 
     private int playerlevel;
 
+    private int xp;
+
+    private int coins;
+
     private Inventory inventory = new Inventory();
 
     public Player(String name, Classes fighterclass){

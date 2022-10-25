@@ -49,7 +49,7 @@
                         <Font size="24.0" />
                      </font>
                   </SplitMenuButton>
-                  <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="225.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="playerSetupPic" fitHeight="100.0" fitWidth="100.0" layoutX="225.0" pickOnBounds="true" preserveRatio="true" />
                   <Button fx:id="createCharacterButton" layoutX="200.0" layoutY="350.0" onAction="#onHelloButtonClick" prefHeight="75.0" prefWidth="200.0" text="Create Character">
                      <font>
                         <Font size="20.0" />
@@ -63,7 +63,7 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <ListView fx:id="opponentsView" layoutX="25.0" layoutY="285.0" onMouseClicked="#showCompStats" prefHeight="150.0" prefWidth="200.0" />
-                  <ListView fx:id="opponentsStats" layoutX="375.0" layoutY="285.0" onMouseClicked="#startBattle" prefHeight="150.0" prefWidth="200.0" />
+                  <ListView fx:id="opponentsStats" layoutX="375.0" layoutY="285.0" prefHeight="150.0" prefWidth="200.0" />
                   <Label fx:id="opponentStatsLabel" alignment="CENTER" layoutX="375.0" layoutY="235.0" prefHeight="50.0" prefWidth="200.0" text="Opponent Class and Level" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font size="18.0" />
@@ -85,7 +85,17 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="inventoryView1" layoutX="375.0" layoutY="75.0" prefHeight="150.0" prefWidth="200.0" />
+                  <ListView fx:id="inventoryView1" layoutX="375.0" layoutY="75.0" onMouseClicked="#useItem" prefHeight="150.0" prefWidth="200.0" />
+                  <Button fx:id="createCharacterButton1" layoutX="235.0" layoutY="335.0" onAction="#startBattle" prefHeight="75.0" prefWidth="130.0" text="Start Battle">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="goToBattleLabel" alignment="CENTER" layoutX="225.0" layoutY="110.0" prefHeight="175.0" prefWidth="150.0" text="GO TO BATTLE TAB" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
         </content>
@@ -95,8 +105,8 @@
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="600.0">
                <children>
                   <ImageView fx:id="playerPic" fitHeight="125.0" fitWidth="125.0" layoutX="25.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true" />
-                  <ListView fx:id="playerAttacks" layoutX="375.0" layoutY="285.0" prefHeight="150.0" prefWidth="200.0" />
-                  <ListView fx:id="playerInventory" layoutX="175.0" layoutY="285.0" prefHeight="150.0" prefWidth="200.0" />
+                  <ListView fx:id="playerAttacks" layoutX="375.0" layoutY="285.0" onMouseClicked="#attack" prefHeight="150.0" prefWidth="200.0" />
+                  <ListView fx:id="playerInventory" layoutX="175.0" layoutY="285.0" onMouseClicked="#useItem" prefHeight="150.0" prefWidth="200.0" />
                   <Label fx:id="battleResultLabel" alignment="CENTER" layoutX="25.0" layoutY="25.0" prefHeight="150.0" prefWidth="200.0" text="Label" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font size="18.0" />
@@ -142,7 +152,7 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="battleResultLabel11" alignment="CENTER" layoutX="25.0" layoutY="25.0" prefHeight="50.0" prefWidth="200.0" text="Coins: 0" textAlignment="CENTER" wrapText="true">
+                  <Label fx:id="coinsLabel" alignment="CENTER" layoutX="25.0" layoutY="25.0" prefHeight="50.0" prefWidth="200.0" text="Coins: 0" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -152,9 +162,9 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="inventoryView" layoutX="25.0" layoutY="150.0" prefHeight="150.0" prefWidth="200.0" />
-                  <ListView fx:id="playerInventory1" layoutX="375.0" layoutY="150.0" prefHeight="150.0" prefWidth="200.0" />
-                  <Label fx:id="ShopLabel" alignment="CENTER" layoutX="375.0" layoutY="100.0" prefHeight="50.0" prefWidth="200.0" text="Shop:" textAlignment="CENTER" wrapText="true">
+                  <ListView fx:id="inventoryView" layoutX="25.0" layoutY="150.0" onMouseClicked="#useItem" prefHeight="150.0" prefWidth="200.0" />
+                  <ListView fx:id="shopView" layoutX="375.0" layoutY="150.0" onMouseClicked="#buyItem" prefHeight="150.0" prefWidth="200.0" />
+                  <Label fx:id="shopLabel" alignment="CENTER" layoutX="375.0" layoutY="100.0" prefHeight="50.0" prefWidth="200.0" text="Shop:" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font size="18.0" />
                      </font>

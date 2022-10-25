@@ -1,21 +1,72 @@
 package com.example.battlegame;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class HelloController {
-    @FXML
-    private Label welcomeText;
 
+    @FXML
+    private ListView<?> classesListView;
+
+    @FXML
+    private Label classSetup, nameSetup, weaponSetup;
+    @FXML
+    private ImageView playerSetupPic;
+
+    @FXML
+    private TextField nameField;
+
+    @FXML
+    private SplitMenuButton weaponMenu;
+
+    @FXML
+    private Button createCharacterButton;
+
+    @FXML
+    private ListView<String> playerStats, inventoryView1, opponentsView, opponentsStats;
+
+    @FXML
+    private Label playerStatsLabel, inventoryLabel1, opponentsLabel, opponentStatsLabel, goToBattleLabel;
+
+    @FXML
+    private ImageView playerPic, compPic;
+
+    @FXML
+    private ListView<?> playerInventory, playerAttacks;
+
+    @FXML
+    private Label battleResultLabel, compHealthLabel, compLabel, playerHealthLabel, playerLabel, playerInventoryLabel, playerAttackLabel;
+
+    @FXML
+    private ProgressBar compHealthBar, playerHealthBar;
+
+    @FXML
+    private Label coinsLabel, inventoryLabel, shopLabel, statsLabel;
+
+    @FXML
+    private ListView<?> inventoryView, shopView, statsView;
+    
     private Classes knight = new Classes("knight");
     private Classes mage = new Classes("mage");
     private Classes archer = new Classes("archer");
     private Classes bard = new Classes("bard");
     private Classes shooter = new Classes("shooter");
+
+    private Items leatherArmor = new Items("leatherArmor", 0,0,-1,10,20);
+    private Items ironArmor = new Items("ironArmor", 0,0,-1,20,40);
+    private Items goldArmor = new Items("goldArmor", 0,0,-1,30,60);
+    private Items diamondArmor = new Items("diamondArmor", 0,0,-1,40,80);
+    private Items legendaryArmor = new Items("legendaryArmor", 0,0,-1,50,100);
+
+    private Items basicHealthPotion = new Items("basicHealthPotion", 0,10,0,0,20);
+    private Items goodHealthPotion = new Items("goodHealthPotion", 0,50,0,0,100);
+    private Items basicSpeedPotion = new Items("basicSpeedPotion", 0,0,10,0,20);
+    private Items goodSpeedPotion = new Items("goodSpeedPotion", 0,0,50,0,100);
 
     private Player p1;
     private ArrayList<Player> compPlayers = new ArrayList<>();
@@ -29,18 +80,18 @@ public class HelloController {
     protected void onHelloButtonClick() {
         p1 = new Player("Ayush", knight);
         updateCompPlayers();
-        System.out.println(compPlayers);
-        printStats(p1);
-        for (Player player:compPlayers) {
-            printStats(player);
+        updateCompPlayers();
+        updateCompPlayers();
+        opponentsView.getItems().clear();
+        for (int i = 1; i <= 3; i++) {
+            opponentsView.getItems().add(compPlayers.get(compPlayers.size()-i).getFighterClass().getClassName());
         }
+
+        goToBattleLabel.setVisible(false);
 
         startBattle();
         attack(battleplayer1,battleplayer2);
 //        attack(battleplayer2,battleplayer1);
-
-        System.out.println(battleplayer1.getAttributes()[2]);
-        System.out.println(battleplayer2.getAttributes()[2]);
     }
 
     @FXML
@@ -65,7 +116,10 @@ public class HelloController {
     @FXML
     protected void startBattle(){
         battleplayer1 = p1;
-        battleplayer2 = compPlayers.get(compPlayers.size()-1);
+        int index = opponentsView.getSelectionModel().getSelectedIndex();
+        battleplayer2 = compPlayers.get(index);
+        compPlayers.remove(index);
+        goToBattleLabel.setVisible(true);
     }
 
     protected void attack(Player attacker, Player attacked){
@@ -77,6 +131,15 @@ public class HelloController {
     }
 
     @FXML
-    public void showCompStats(MouseEvent mouseEvent) {
+    public void showCompStats() {
+    }
+
+    public void useItem() {
+    }
+
+    public void buyItem() {
+    }
+
+    public void attack() {
     }
 }
