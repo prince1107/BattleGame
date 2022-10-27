@@ -1,23 +1,28 @@
 package com.example.battlegame;
 
+import javafx.scene.control.ListView;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Shop {
-    private ArrayList<Items> itemList = new ArrayList<>();
+    private Items[] itemList;
 
-    public Shop(ArrayList itemList){
+    public Shop(Items[] itemList){
         this.itemList = itemList;
     }
 
-    protected void randomizeShop(){
-        ArrayList<Items> tempList = new ArrayList<>();
+    protected void randomizeShop(ListView listView){
+        ArrayList<String> tempList = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
             Random random = new Random();
-            int index = random.nextInt(itemList.size());
-            tempList.add((itemList.get(index)));
+            int index = random.nextInt(itemList.length);
+            tempList.add(itemList[index].getName());
         }
+
+        listView.getItems().clear();
+        listView.getItems().addAll(tempList);
     }
 
 }

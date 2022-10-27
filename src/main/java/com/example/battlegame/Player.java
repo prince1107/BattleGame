@@ -49,4 +49,28 @@ public class Player {
     protected void changeAttributes(int index, int change){
         attributes[index] += change;//Strength, Speed, Health, Defense
     }
+
+    public int getCoins() {
+        return coins;
+    }
+
+    public int getXp() {
+        return xp;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void changeCoins(int coins) {
+        this.coins += coins;
+    }
+
+    public void changePlayerlevel(int playerlevel) {
+        this.playerlevel += playerlevel;
+    }
+
+    public void changeXp(int xp) {
+        this.xp += xp;
+    }
 }
