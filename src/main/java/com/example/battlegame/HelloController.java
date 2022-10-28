@@ -229,7 +229,6 @@ public class HelloController {
             if (battleplayer2.getAttributes()[2]<=0){
                 p1.changeCoins(10*turn);
                 p1.changeXp(20*turn);
-
             }
         }
     }
@@ -355,7 +354,7 @@ public class HelloController {
     }
 
     public void attack() {
-        attack(battleplayer1, battleplayer2, playerAttacks.getSelectionModel().getSelectedIndex(););
+        attack(battleplayer1, battleplayer2, playerAttacks.getSelectionModel().getSelectedIndex());
         attack(battleplayer2, battleplayer1, (int)Math.random()*5);
         turn++;
     }
