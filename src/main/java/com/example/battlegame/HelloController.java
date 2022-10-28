@@ -5,7 +5,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -207,7 +206,7 @@ public class HelloController {
         playerAttacks.getItems().addAll(tempList);
     }
 
-    protected void attack(Player attacker, Player attacked){
+    protected void attack(Player attacker, Player attacked, int attackindex){
         int damagechance = (int)(Math.random()*25);
         double damagemultiplier = 1;
 
@@ -220,11 +219,28 @@ public class HelloController {
 
         System.out.println(damagechance);
 
-        double damage = attacker.getFighterClass().getAttacks().get(1).getAttackDamage() * damagemultiplier;
+        double damage = attacker.getFighterClass().getAttacks().get(attackindex).getAttackDamage() * damagemultiplier;
         double damageDealt = attacked.getAttributes()[3] - damage * attacker.getAttributes()[0]/50 * attacker.getAttributes()[1]/50 + selectedWeapon.getDamage()/10;
         System.out.println(damageDealt);
         System.out.println(attacked.getAttributes()[2]);
         attacked.changeAttributes(2,(damageDealt*-1));
+
+        if (checkDead()){
+            if (battleplayer2.getAttributes()[2]<=0){
+                p1.changeCoins(10*turn);
+                p1.changeXp(20*turn);
+
+            }
+        }
+    }
+
+    private boolean checkDead() {
+        if (battleplayer1.getAttributes()[2]<=0){
+            return true;
+        } else if (battleplayer2.getAttributes()[2]<=0){
+            return true;
+        }
+        return false;
     }
 
     @FXML
@@ -339,7 +355,8 @@ public class HelloController {
     }
 
     public void attack() {
-        attack(battleplayer1, battleplayer2);
+        attack(battleplayer1, battleplayer2, playerAttacks.getSelectionModel().getSelectedIndex(););
+        attack(battleplayer2, battleplayer1, (int)Math.random()*5);
         turn++;
     }
 
