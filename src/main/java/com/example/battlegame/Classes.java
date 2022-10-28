@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Classes {
     private String className;
 
-    private int[] attributeChanges;//Strength, Speed, Health, Defense
+    private double[] attributeChanges;//Strength, Speed, Health, Defense
 
     private ArrayList<Attack> attacks = new ArrayList<>();
 
@@ -14,7 +14,7 @@ public class Classes {
     public Classes(String className){
         this.className = className;
         if(className.equals("knight")){
-            this.attributeChanges = new int[]{20,-5,0,10};
+            this.attributeChanges = new double[]{20,-5,0,10};
 
             attacks.add(new Attack("Piercing Stab", 15));
             attacks.add(new Attack("Slice", 5));
@@ -24,7 +24,7 @@ public class Classes {
             attacks.add(new Attack("Flee", 0));
 
         } else if(className.equals("mage")){
-            this.attributeChanges = new int[]{-10,15,20,0};
+            this.attributeChanges = new double[]{-10,15,70,0};
 
             attacks.add(new Attack("Fire Rain", 30));
             attacks.add(new Attack("Shadow Slice", 25));
@@ -34,7 +34,7 @@ public class Classes {
             attacks.add(new Attack("Flee", 0));
 
         } else if(className.equals("archer")){
-            this.attributeChanges = new int[]{-10,25,0,10};
+            this.attributeChanges = new double[]{-10,25,0,10};
 
             attacks.add(new Attack("Piercing Arrows", 10));
             attacks.add(new Attack("Exploding Arrows", 25));
@@ -44,7 +44,7 @@ public class Classes {
             attacks.add(new Attack("Flee", 0));
 
         } else if(className.equals("bard")){
-            this.attributeChanges = new int[]{20,-5,0,10};
+            this.attributeChanges = new double[]{20,-5,-40,10};
 
             attacks.add(new Attack("Bagpipe Shriek", 5));
             attacks.add(new Attack("Flute Slice", 10));
@@ -54,11 +54,11 @@ public class Classes {
             attacks.add(new Attack("Flee", 0));
 
         } else if(className.equals("shooter")){
-            this.attributeChanges = new int[]{20,-5,0,10};
+            this.attributeChanges = new double[]{-10,-5,-30,10};
             attacks.add(new Attack("Piercing Bullets", 20));
             attacks.add(new Attack("Bayonet Slice", 10));
             attacks.add(new Attack("Speed++", 0));
-            attacks.add(new Attack("Snipe", 100000));
+            attacks.add(new Attack("Snipe", 100));
             attacks.add(new Attack("MultiShot", 30));
             attacks.add(new Attack("Flee", 0));
 
@@ -69,7 +69,7 @@ public class Classes {
         return attacks;
     }
 
-    public int[] getAttributeChanges() {
+    public double[] getAttributeChanges() {
         return attributeChanges;
     }
 

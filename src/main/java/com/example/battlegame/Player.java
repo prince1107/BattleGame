@@ -5,13 +5,13 @@ public class Player {
 
     private Classes fighterClass;
 
-    private int[] attributes = {50,50,50,50};//Strength, Speed, Health, Defense
+    private double[] attributes = {50,50,100,50};//Strength, Speed, Health, Defense
 
-    private int playerlevel;
+    private int playerlevel = 1;
 
-    private int xp;
+    private int xp = 0;
 
-    private int coins;
+    private int coins = 1000;
 
     private Inventory inventory = new Inventory();
 
@@ -21,9 +21,9 @@ public class Player {
         for (int i = 0; i < attributes.length; i++) {
             attributes[i] += fighterclass.getAttributeChanges()[i];
         }
-        playerlevel = 1;
     }
     public Player(Classes fighterclass, Player player){
+        this.name = "Computer";
         this.fighterClass = fighterclass;
         for (int i = 0; i < attributes.length; i++) {
             attributes[i] += fighterclass.getAttributeChanges()[i]*player.getPlayerlevel();
@@ -38,7 +38,7 @@ public class Player {
         return fighterClass;
     }
 
-    public int[] getAttributes() {
+    public double[] getAttributes() {
         return attributes;
     }
 
@@ -46,7 +46,7 @@ public class Player {
         return playerlevel;
     }
 
-    protected void changeAttributes(int index, int change){
+    protected void changeAttributes(int index, double change){
         attributes[index] += change;//Strength, Speed, Health, Defense
     }
 

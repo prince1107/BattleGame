@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Attack {
     private String attackName;
 
-    private int attackDamage;
+    private double attackDamage;
 
     public Attack(String attackName, int attackDamage){
         this.attackName = attackName;
@@ -16,7 +16,7 @@ public class Attack {
         return attackName;
     }
 
-    public int getAttackDamage() {
+    public double getAttackDamage() {
         return attackDamage;
     }
 }

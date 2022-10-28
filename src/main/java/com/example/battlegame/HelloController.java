@@ -42,7 +42,7 @@ public class HelloController {
     private ImageView playerPic, compPic;
 
     @FXML
-    private ListView<?> playerInventory, playerAttacks;
+    private ListView<String> playerInventory, playerAttacks;
 
     @FXML
     private Label battleResultLabel, compHealthLabel, compLabel, playerHealthLabel, playerLabel, playerInventoryLabel, playerAttackLabel;
@@ -54,7 +54,7 @@ public class HelloController {
     private Label coinsLabel, inventoryLabel, shopLabel, statsLabel;
 
     @FXML
-    private ListView<?> inventoryView, shopView, statsView;
+    private ListView<String> inventoryView, shopView, statsView;
     
     private Classes knight = new Classes("knight");
     private Classes mage = new Classes("mage");
@@ -102,6 +102,10 @@ public class HelloController {
     private Player battleplayer1;
     private Player battleplayer2;
 
+    private int turn = 0;
+
+    private Items selectedWeapon;
+
     private OwnedItems selectedStartingItem;
 
     EventHandler<ActionEvent> event1 = new EventHandler<ActionEvent>() {
@@ -139,6 +143,7 @@ public class HelloController {
         }
 
         printStats(playerStats, p1);
+        displayItems();
     }
 
     @FXML
@@ -185,6 +190,7 @@ public class HelloController {
 
     @FXML
     protected void startBattle(){
+        turn = 0;
         battleplayer1 = p1;
         int index = opponentsView.getSelectionModel().getSelectedIndex();
         battleplayer2 = compPlayers.get(index);
@@ -196,14 +202,29 @@ public class HelloController {
         for (Attack attack: battleplayer1.getFighterClass().getAttacks()) {
             tempList.add(attack.getAttackName() + "; Damage: " + attack.getAttackDamage());
         }
+
+        playerAttacks.getItems().clear();
+        playerAttacks.getItems().addAll(tempList);
     }
 
     protected void attack(Player attacker, Player attacked){
-        int damage = attacker.getFighterClass().getAttacks().get(1).getAttackDamage();
-        int damageDealt = attacked.getAttributes()[3] - damage * attacker.getAttributes()[0]/40 * attacker.getAttributes()[1]/40;
+        int damagechance = (int)(Math.random()*25);
+        double damagemultiplier = 1;
+
+        if(damagechance == 0){
+            damagemultiplier = 0;
+        }
+        if(damagechance == 1){
+            damagemultiplier = 1.5;
+        }
+
+        System.out.println(damagechance);
+
+        double damage = attacker.getFighterClass().getAttacks().get(1).getAttackDamage() * damagemultiplier;
+        double damageDealt = attacked.getAttributes()[3] - damage * attacker.getAttributes()[0]/50 * attacker.getAttributes()[1]/50 + selectedWeapon.getDamage()/10;
         System.out.println(damageDealt);
         System.out.println(attacked.getAttributes()[2]);
-        attacked.changeAttributes(2,damageDealt);
+        attacked.changeAttributes(2,(damageDealt*-1));
     }
 
     @FXML
@@ -214,13 +235,112 @@ public class HelloController {
     }
 
     public void useItem() {
+        int index = inventoryView.getSelectionModel().getSelectedIndex();
+
+        if (p1.getInventory().getItemsOwned().get(index).getItem().getDamage() > 0){
+            selectedWeapon = p1.getInventory().getItemsOwned().get(index).getItem();
+        } else {
+            p1.changeAttributes(1, p1.getInventory().getItemsOwned().get(index).getItem().getSpeed());
+            p1.changeAttributes(2, p1.getInventory().getItemsOwned().get(index).getItem().getHealing());
+            p1.changeAttributes(3, p1.getInventory().getItemsOwned().get(index).getItem().getDefense());
+            p1.getInventory().getItemsOwned().get(index).changeNumItems(-1);
+            if (p1.getInventory().getItemsOwned().get(index).getNumItems() == 0) {
+                p1.getInventory().getItemsOwned().remove(index);
+            }
+        }
+
+        displayItems();
+    }
+
+    public void useItem1() {
+        int index = inventoryView1.getSelectionModel().getSelectedIndex();
+
+        if (p1.getInventory().getItemsOwned().get(index).getItem().getDamage() > 0){
+            selectedWeapon = p1.getInventory().getItemsOwned().get(index).getItem();
+        } else {
+            p1.changeAttributes(1, p1.getInventory().getItemsOwned().get(index).getItem().getSpeed());
+            p1.changeAttributes(2, p1.getInventory().getItemsOwned().get(index).getItem().getHealing());
+            p1.changeAttributes(3, p1.getInventory().getItemsOwned().get(index).getItem().getDefense());
+            p1.getInventory().getItemsOwned().get(index).changeNumItems(-1);
+            if (p1.getInventory().getItemsOwned().get(index).getNumItems() == 0) {
+                p1.getInventory().getItemsOwned().remove(index);
+            }
+        }
+
+        displayItems();
+    }
+
+    public void useItem2() {
+        int index = playerInventory.getSelectionModel().getSelectedIndex();
+
+        if (p1.getInventory().getItemsOwned().get(index).getItem().getDamage() > 0){
+            selectedWeapon = p1.getInventory().getItemsOwned().get(index).getItem();
+        } else {
+            p1.changeAttributes(1, p1.getInventory().getItemsOwned().get(index).getItem().getSpeed());
+            p1.changeAttributes(2, p1.getInventory().getItemsOwned().get(index).getItem().getHealing());
+            p1.changeAttributes(3, p1.getInventory().getItemsOwned().get(index).getItem().getDefense());
+            p1.getInventory().getItemsOwned().get(index).changeNumItems(-1);
+            if (p1.getInventory().getItemsOwned().get(index).getNumItems() == 0) {
+                p1.getInventory().getItemsOwned().remove(index);
+            }
+        }
+
+        displayItems();
+    }
+
+    public void displayItems() {
+        inventoryView.getItems().clear();
+        for (OwnedItems item: p1.getInventory().getItemsOwned()) {
+            inventoryView.getItems().add(item.getItem().getName() + "; Number: " + item.getNumItems());
+        }
+
+        inventoryView1.getItems().clear();
+        for (OwnedItems item: p1.getInventory().getItemsOwned()) {
+            inventoryView1.getItems().add(item.getItem().getName() + "; Number: " + item.getNumItems());
+        }
+
+        playerInventory.getItems().clear();
+        for (OwnedItems item: p1.getInventory().getItemsOwned()) {
+            playerInventory.getItems().add(item.getItem().getName() + "; Number: " + item.getNumItems());
+        }
     }
 
     public void buyItem() {
+        int index = shopView.getSelectionModel().getSelectedIndex();
+        int price = shop.getCurrentList().get(index).getShopPrice();
+
+        if (p1.getCoins()>price){
+            p1.changeCoins(price);
+            Items tempItem = shop.getCurrentList().get(index);
+
+            boolean owned = false;
+
+            for (OwnedItems items: p1.getInventory().getItemsOwned()) {
+                if (items.getItem() == tempItem){
+                    owned = true;
+                }
+            }
+
+            if (owned){
+                for (OwnedItems items: p1.getInventory().getItemsOwned()) {
+                    if (items.getItem() == tempItem){
+                        items.changeNumItems(1);
+                    }
+                }
+            } else {
+                p1.getInventory().addItem(new OwnedItems(tempItem));
+            }
+
+        } else {
+            System.out.println("Not enough Money");
+        }
+
+        displayItems();
     }
 
     public void attack() {
         attack(battleplayer1, battleplayer2);
+        turn++;
     }
 
     public void refreshShop() {

@@ -7,6 +7,8 @@ public class OwnedItems {
 
     public OwnedItems(Items item){
         this.item = item;
+
+        numItems = 1;
     }
 
     public Items getItem() {

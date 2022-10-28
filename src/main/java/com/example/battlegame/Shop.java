@@ -8,6 +8,8 @@ import java.util.Random;
 public class Shop {
     private Items[] itemList;
 
+    private ArrayList<Items> currentList = new ArrayList<>();
+
     public Shop(Items[] itemList){
         this.itemList = itemList;
     }
@@ -18,11 +20,15 @@ public class Shop {
         for (int i = 0; i < 10; i++) {
             Random random = new Random();
             int index = random.nextInt(itemList.length);
-            tempList.add(itemList[index].getName());
+            tempList.add(itemList[index].getName() + "; Price: " + itemList[index].getShopPrice());
+            currentList.add(itemList[index]);
         }
 
         listView.getItems().clear();
         listView.getItems().addAll(tempList);
     }
 
+    public ArrayList<Items> getCurrentList() {
+        return currentList;
+    }
 }

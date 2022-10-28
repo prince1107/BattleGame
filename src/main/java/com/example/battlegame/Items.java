@@ -3,14 +3,14 @@ package com.example.battlegame;
 public class Items {
     private String name;
 
-    private int damage;
-    private int healing;
-    private int speed;
-    private int defense;
+    private double damage;
+    private double healing;
+    private double speed;
+    private double defense;
 
     private int shopPrice;
 
-    public Items(String name, int damage, int healing, int speed, int defense, int shopPrice){
+    public Items(String name, double damage, double healing, double speed, double defense, int shopPrice){
         this.name = name;
 
         this.damage = damage;
@@ -24,19 +24,19 @@ public class Items {
         return name;
     }
 
-    public int getDamage() {
+    public double getDamage() {
         return damage;
     }
 
-    public int getDefense() {
+    public double getDefense() {
         return defense;
     }
 
-    public int getHealing() {
+    public double getHealing() {
         return healing;
     }
 
-    public int getSpeed() {
+    public double getSpeed() {
         return speed;
     }
 
