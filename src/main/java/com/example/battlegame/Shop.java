@@ -16,6 +16,7 @@ public class Shop {
 
     protected void randomizeShop(ListView listView){
         ArrayList<String> tempList = new ArrayList<>();
+        currentList.clear();
 
         for (int i = 0; i < 10; i++) {
             Random random = new Random();

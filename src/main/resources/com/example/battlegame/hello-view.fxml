@@ -55,9 +55,9 @@
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="createCharacterButton2" layoutX="491.0" layoutY="376.0" onAction="#onHelloButtonClick" prefHeight="49.0" prefWidth="95.0" text="TEST">
+                  <Button fx:id="hardModeButton" layoutX="67.0" layoutY="352.0" onAction="#setHardMode" prefHeight="49.0" prefWidth="95.0" text="Hard Mode">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="14.0" />
                      </font>
                   </Button>
                </children></AnchorPane>
@@ -109,38 +109,31 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="600.0">
                <children>
-                  <ImageView fx:id="playerPic" fitHeight="125.0" fitWidth="125.0" layoutX="25.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true" />
-                  <ListView fx:id="playerAttacks" layoutX="375.0" layoutY="285.0" onMouseClicked="#attack" prefHeight="150.0" prefWidth="200.0" />
-                  <ListView fx:id="playerInventory" layoutX="175.0" layoutY="285.0" onMouseClicked="#useItem2" prefHeight="150.0" prefWidth="200.0" />
                   <Label fx:id="battleResultLabel" alignment="CENTER" layoutX="25.0" layoutY="25.0" prefHeight="150.0" prefWidth="200.0" text="Label" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ProgressBar fx:id="compHealthBar" layoutX="225.0" layoutY="100.0" prefHeight="25.0" prefWidth="200.0" progress="0.0" />
                   <Label fx:id="compHealthLabel" alignment="CENTER" layoutX="225.0" layoutY="75.0" prefHeight="25.0" prefWidth="200.0" text="COMP Health: 100" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="playerLabel" alignment="CENTER" layoutX="25.0" layoutY="410.0" prefHeight="25.0" prefWidth="125.0" text="YOU" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
+                  <ProgressBar fx:id="compHealthBar" layoutX="225.0" layoutY="100.0" prefHeight="25.0" prefWidth="200.0" progress="0.0" />
                   <ImageView fx:id="compPic" fitHeight="125.0" fitWidth="125.0" layoutX="450.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="compLabel" alignment="CENTER" layoutX="450.0" layoutY="150.0" prefHeight="25.0" prefWidth="125.0" text="COMP" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="playerAttackLabel" alignment="CENTER" layoutX="375.0" layoutY="235.0" prefHeight="50.0" prefWidth="200.0" text="Attacks:" textAlignment="CENTER" wrapText="true">
+                  <Label fx:id="playerHealthLabel" alignment="CENTER" layoutX="25.0" layoutY="235.0" prefHeight="25.0" prefWidth="150.0" text="Your Health: 100" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                   <ProgressBar fx:id="playerHealthBar" layoutX="25.0" layoutY="260.0" prefHeight="25.0" prefWidth="150.0" progress="0.0" />
-                  <Label fx:id="playerHealthLabel" alignment="CENTER" layoutX="25.0" layoutY="235.0" prefHeight="25.0" prefWidth="150.0" text="Your Health: 100" textAlignment="CENTER" wrapText="true">
+                  <ImageView fx:id="playerPic" fitHeight="125.0" fitWidth="125.0" layoutX="25.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="playerLabel" alignment="CENTER" layoutX="25.0" layoutY="410.0" prefHeight="25.0" prefWidth="125.0" text="YOU" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -150,6 +143,18 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
+                  <ListView fx:id="playerInventory" layoutX="175.0" layoutY="285.0" onMouseClicked="#useItem2" prefHeight="150.0" prefWidth="200.0" />
+                  <Label fx:id="playerAttackLabel" alignment="CENTER" layoutX="375.0" layoutY="235.0" prefHeight="50.0" prefWidth="200.0" text="Attacks:" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="playerAttacks" layoutX="375.0" layoutY="285.0" onMouseClicked="#attack" prefHeight="150.0" prefWidth="200.0" />
+                  <Button fx:id="compAttackButton" layoutX="230.0" layoutY="186.0" onAction="#compAttack" prefHeight="49.0" prefWidth="95.0" text="CompAttack">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
                </children></AnchorPane>
       </content>
     </Tab>

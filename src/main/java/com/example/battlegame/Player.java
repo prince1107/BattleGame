@@ -11,7 +11,7 @@ public class Player {
 
     private int xp = 0;
 
-    private int coins = 1000;
+    private int coins = 100;
 
     private Inventory inventory = new Inventory();
 
@@ -26,8 +26,18 @@ public class Player {
         this.name = "Computer";
         this.fighterClass = fighterclass;
         for (int i = 0; i < attributes.length; i++) {
-            attributes[i] += fighterclass.getAttributeChanges()[i]*player.getPlayerlevel();
+            attributes[i] += fighterclass.getAttributeChanges()[i];
         }
+        this.playerlevel = player.getPlayerlevel();
+    }
+
+    public Player(Classes fighterclass, Player player, String bossname){
+        this.name = bossname;
+        this.fighterClass = fighterclass;
+        for (int i = 0; i < attributes.length; i++) {
+            attributes[i] += fighterclass.getAttributeChanges()[i];
+        }
+        this.playerlevel = player.getPlayerlevel();
     }
 
     public String getName() {
@@ -48,6 +58,9 @@ public class Player {
 
     protected void changeAttributes(int index, double change){
         attributes[index] += change;//Strength, Speed, Health, Defense
+    }
+    protected void setAttributes(int index, double amount){
+        attributes[index] = amount;
     }
 
     public int getCoins() {
